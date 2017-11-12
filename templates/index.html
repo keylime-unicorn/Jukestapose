@@ -29,16 +29,15 @@ https://www.behance.net/gallery/49260123/Web-Audio-Visualization
        <p class="derpy">音 </p><p class="derpy2">楽</p>
        <span id="loading"></span>
         <div id="song_info_wrapper">
-        	<div id="artist">Artist</div>
-			<div id="title">Titel</div>
-			<div id="album">Album</div>
-		</div>
-        <img src="css/veil.png" class="bgimg">
+            <div id="artist">Artist</div>
+            <div id="title">Titel</div>
+            <div id="album">Album</div>
+        </div>
+        <img src="{{ url_for('static', filename='css/veil.png') }}" class="bgimg">
         <a onclick="success()" class="derp"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
         <canvas id="freq" width="1024" height="525"></canvas>
     </body>
 
-"{{ url_for('static', filename='css/style.css') }}"
 <script src="{{ url_for('static', filename='src/bufferloader.js') }}"></script>
 <script src="{{ url_for('static', filename='src/id3-minimized.js') }}"></script>
 <script src="{{ url_for('static', filename='src/audiovisualisierung.js') }}"></script>
