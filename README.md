@@ -25,5 +25,3 @@ Hence Jukestapose was born!
 Server
 
 * run `./start.sh`
-
-Client
