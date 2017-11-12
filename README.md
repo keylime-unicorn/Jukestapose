@@ -1,4 +1,4 @@
-# TBD (lug modern jukebox)
+# Jukestapose
 
 Tim Burchfield | Cami Carballo | Doug Smith | Noah Yoshida
 
@@ -18,5 +18,12 @@ Hence the ___LUG Modern Jukebox___ was born!
 
 ## Dependencies
 
+* run the following command: `pip install -r REQUIREMENTS.txt`
 
 ## Usage
+
+Server
+
+* run `./start.sh`
+
+Client

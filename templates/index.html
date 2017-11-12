@@ -17,7 +17,7 @@ https://www.behance.net/gallery/49260123/Web-Audio-Visualization
         <![endif]-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
         <script src="https://use.fontawesome.com/230fb0e4c1.js"></script>
 
@@ -38,8 +38,9 @@ https://www.behance.net/gallery/49260123/Web-Audio-Visualization
         <canvas id="freq" width="1024" height="525"></canvas>
     </body>
 
-<script src="src/bufferloader.js"></script>
-<script src="src/id3-minimized.js"></script>
-<script src="src/audiovisualisierung.js"></script>
+"{{ url_for('static', filename='css/style.css') }}"
+<script src="{{ url_for('static', filename='src/bufferloader.js') }}"></script>
+<script src="{{ url_for('static', filename='src/id3-minimized.js') }}"></script>
+<script src="{{ url_for('static', filename='src/audiovisualisierung.js') }}"></script>
 
 </html>
