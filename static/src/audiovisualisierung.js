@@ -47,46 +47,41 @@ function success() {
     console.log('Succesful!');
 }
 function handleFiles(files) {
-    if(files.length === 0){
+    console.log("hi tim")
+    if(files.length == 0){
         return;
     }
+    console.log(files)
+
+    console.log("hi ahhefuhre tim")
     fileChosen = true;
     setupAudioNodes();
     var fileReader  = new FileReader();
-    fileReader.onload = function(){
-         var arrayBuffer = this.result;
-         console.log(arrayBuffer);
-         console.log(arrayBuffer.byteLength);
+    fileReader.onload = function(event){
+    console.log(JSON.stringify(files))
+      var arrayBuffer = this.result;
+      console.log('what is result? ' + arrayBuffer);
 
-         filename = files[0].name.toString();
-        filename = filename.slice(0, -4);
-        console.log(filename);
+      f_name = files[0].name.toString();
+      console.log("AHHHHH  " + f_name)
 
-        var url = files[0].urn || files[0].name;
-        ID3.loadTags(url, function() {
-            var tags = ID3.getAllTags(url);
+      console.log(files[0].size)
+      console.log(files[0].value)
 
-//                    console.log(tags.title.toString().length);
-//                    if (tags.title.length > 14) {
-//                        var newTitle = tags.title.substring(0,14);
-//                        newTitle += "...";
-//                        $("#title").html(newTitle);
-//                    }
-//                    else {
-//                        $("#title").html(tags.title);
-//                    }
+      filename = f_name.slice(0, -4);
+
+      var url = files[0].urn || files[0].name;
+      ID3.loadTags(url, function() {
+        var tags = ID3.getAllTags(url);
+
             if (tags.title.length > 14) {
                 var finalTitle;
                 var checkTitle = tags.title.toLowerCase();
                 var cutIndex = checkTitle.indexOf("feat.");
-                //console.log(tags.title.toLowerCase());
                 var cutIndex2 = checkTitle.indexOf("(");
-                //console.log(cutIndex2);
 
                 var enthaeltFeat = cutIndex !== -1;
                 var enthaeltKlammer = cutIndex2 !== -1;
-
-                //console.log(enthaeltKlammer);
 
                 if (enthaeltFeat && !enthaeltKlammer) {
                     finalTitle = tags.title.substring(0, cutIndex);
@@ -123,106 +118,25 @@ function handleFiles(files) {
             dataReader: ID3.FileAPIReader(files[0])
           });
 
+        var form = document.forms.namedItem('fileinfo')
+        console.log(JSON.stringify(form) + " IS form");
+        var oData = new FormData(form)
+        oData.append('file', files[0])
+        console.log(JSON.stringify(oData) + " IS oData");
+        var request = new XMLHttpRequest();
+        console.log(files[0] + " IS files[0]");
+
+        console.log("filename: " + f_name);
+        request.open('POST', '', true);
+        request.send(oData);
+ 
      };
+
      fileReader.readAsArrayBuffer(files[0]);
-     var url = URL.createObjectURL(files[0]);
-
-    var request = new XMLHttpRequest();
-
-    request.addEventListener("progress", updateProgress);
-    request.addEventListener("load", transferComplete);
-    request.addEventListener("error", transferFailed);
-    request.addEventListener("abort", transferCanceled);
-
-    request.open('GET', url, true);
-    request.responseType = 'arraybuffer';
-
-    // When loaded decode the data
-    request.onload = function() {
-        // decode the data
-        context.decodeAudioData(request.response, function(buffer) {
-        // when the audio is decoded play the sound
-        sourceNode.buffer = buffer;
-        sourceNode.start(0);
-        // $("#freq, body").addClass("animateHue");
-        //on error
-        }, function(e) {
-            console.log(e);
-        });
-    };
-    request.send();
-
-    $("button, input").prop("disabled",true);
+ 
+     $("button, input").prop("disabled",true);
 }
 
-function playSample() {
-
-    fileChosen = true;
-    setupAudioNodes();
-
-    var request = new XMLHttpRequest();
-
-    request.addEventListener("progress", updateProgress);
-    request.addEventListener("load", transferComplete);
-    request.addEventListener("error", transferFailed);
-    request.addEventListener("abort", transferCanceled);
-
-    request.open('GET', 'src/Infinite.mp3', true);
-    request.responseType = 'arraybuffer';
-
-    // When loaded decode the data
-    request.onload = function() {
-
-        $("#title").html("Infinite");
-        $("#album").html("Infinite");
-        $("#artist").html("Valence");
-        $("#title, #artist, #album").css("visibility", "visible");
-
-        // decode the data
-        context.decodeAudioData(request.response, function(buffer) {
-        // when the audio is decoded play the sound
-        sourceNode.buffer = buffer;
-        sourceNode.start(0);
-        $("#freq, body").addClass("animateHue");
-        //on error
-        }, function(e) {
-            console.log(e);
-        });
-    };
-    request.send();
-
-    $("button, input").prop("disabled",true);
-}
-
-// progress on transfers from the server to the client (downloads)
-function updateProgress (oEvent) {
-  if (oEvent.lengthComputable) {
-    $("button, input").prop("disabled",true);
-    var percentComplete = oEvent.loaded / oEvent.total;
-    console.log("Loading music file... " + Math.floor(percentComplete * 100) + "%");
-    $("#loading").html("Loading... " + Math.floor(percentComplete * 100) + "%");
-  } else {
-    // Unable to compute progress information since the total size is unknown
-      console.log("Unable to compute progress info.");
-  }
-}
-
-function transferComplete(evt) {
-    console.log("The transfer is complete.");
-    $("#loading").html("");
-    //$("button, input").prop("disabled",false);
-}
-
-function transferFailed(evt) {
-    console.log("An error occurred while transferring the file.");
-    $("#loading").html("Loading failed.");
-    $("button, input").prop("disabled", false);
-}
-
-function transferCanceled(evt) {
-    console.log("The transfer has been canceled by the user.");
-    $("#loading").html("Loading canceled.");
-}
 
 function initBinCanvas () {
 
@@ -245,7 +159,6 @@ function initBinCanvas () {
     gradient.addColorStop(0.25,'#f00'); //yellow
     gradient.addColorStop(0,'#ffff00'); //white
 
-
     ctx.fillStyle = "#9c0001";
 }
 
@@ -259,6 +172,7 @@ function onWindowResize()
     $("#song_info_wrapper").css("top", topVal);
     console.log(topVal);
 }
+
 
 var audioBuffer;
 var sourceNode;
@@ -295,8 +209,6 @@ function updateVisualization () {
 
         drawBars(array);
     }
-       // setTextAnimation(array);
-
 
     rafID = window.requestAnimationFrame(updateVisualization);
 }

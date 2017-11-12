@@ -9,12 +9,9 @@ https://www.behance.net/gallery/49260123/Web-Audio-Visualization
     <head>
         <meta charset="utf-8">
         <meta content='IE=8' http-equiv='X-UA-Compatible'>
-        <title>Frequcency analysis using HTML5 Audio and Web Audio API</title>
+        <title>Jukestapose</title>
         <meta name="viewport" content="width=device-width">
-        <!-- Das favicon.ico und das apple-touch-icon.png in das root Verzeichnis -->
-        <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">        <!--[if lt IE 9]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+        <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">       
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -23,14 +20,16 @@ https://www.behance.net/gallery/49260123/Web-Audio-Visualization
 
     </head>
     <body>
-       <input type="file" id="Invisibleinput" onchange="handleFiles(this.files)" style="display:none"/>
-       <!-- <button onClick="handleFiles(this.files)"></button> -->
-       <!-- <button type="button" onClick="playSample()">Play Sample File</button> -->
+      
+      <form method="post" name="fileinfo" enctype="multipart/form-data"> 
+        <input type="file" id="Invisibleinput" onchange="handleFiles(this.files)" style="display:none"/>
+        <input type="submit" value="submit" style="display:none">
+      </form>
        <p class="derpy">音 </p><p class="derpy2">楽</p>
        <span id="loading"></span>
         <div id="song_info_wrapper">
             <div id="artist">Artist</div>
-            <div id="title">Titel</div>
+            <div id="title">Title</div>
             <div id="album">Album</div>
         </div>
         <img src="{{ url_for('static', filename='css/veil.png') }}" class="bgimg">
