@@ -42,10 +42,34 @@ $(function () {
             //init canvas
         initBinCanvas();
 });
+
 function success() {
     document.getElementById('Invisibleinput').click();
     console.log('Succesful!');
 }
+
+function get_song(files) {
+
+  var form = document.forms.namedItem('fileinfo')
+  var oData = new FormData(form)
+  oData.append('file', files[0])
+  var request = new XMLHttpRequest();
+
+  request.open('POST', '', true);
+
+  request.onload = function() {
+    context.decodeAudioData(request.response, function(buffer) {
+      sourceNode.buffer = buffer;
+      sourceNode.start(50);
+    }, function(e) {
+      console.log(e);
+    });
+  };
+
+  request.send(oData);
+ 
+}
+
 function handleFiles(files) {
     if(files.length == 0){
         return;
@@ -109,23 +133,7 @@ function handleFiles(files) {
             dataReader: ID3.FileAPIReader(files[0])
           });
 
-        var form = document.forms.namedItem('fileinfo')
-        var oData = new FormData(form)
-        oData.append('file', files[0])
-        var request = new XMLHttpRequest();
 
-        request.open('POST', '', true);
-
-        request.onload = function() {
-          context.decodeAudioData(request.response, function(buffer) {
-            sourceNode.buffer = buffer;
-            sourceNode.start(50);
-            }, function(e) {
-              console.log(e);
-          });
-        };
-        request.send(oData);
- 
      };
 
      fileReader.readAsArrayBuffer(files[0]);
