@@ -24,7 +24,7 @@ def main():
     play_song(song)
 def add_to_queue(name):
   queue.append(name)
-  print queue
+  print(queue)
 def play_song(name):
   music = pyglet.resource.media(name)
   music.play()
