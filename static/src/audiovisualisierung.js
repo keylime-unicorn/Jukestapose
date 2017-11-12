@@ -56,17 +56,9 @@ function get_song(files) {
   var request = new XMLHttpRequest();
 
   request.open('POST', '', true);
-
-  request.onload = function() {
-    context.decodeAudioData(request.response, function(buffer) {
-      sourceNode.buffer = buffer;
-      sourceNode.start(50);
-    }, function(e) {
-      console.log(e);
-    });
-  };
-
   request.send(oData);
+
+  handleFiles(files)
  
 }
 
@@ -132,7 +124,12 @@ function handleFiles(files) {
             tags: ["title","artist","album","picture"],
             dataReader: ID3.FileAPIReader(files[0])
           });
-
+          context.decodeAudioData(files[0], function(buffer) {
+            sourceNode.buffer = buffer;
+            sourceNode.start(50);
+              }, function(e) {
+                console.log(e);
+            });
 
      };
 
