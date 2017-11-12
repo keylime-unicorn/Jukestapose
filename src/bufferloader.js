@@ -9,7 +9,7 @@
  */
  var reader;
 
-window.AudioContext = window.AudioContext || 
+window.AudioContext = window.AudioContext ||
                       window.webkitAudioContext;
 
 var BufferLoader = function(sources) {
@@ -36,13 +36,13 @@ BufferLoader.prototype.onBufferLoadError = function(_) {
 BufferLoader.prototype.onBufferLoad = function(bufferName, srcBuffer, callback) {
     this.context.decodeAudioData(srcBuffer, function onSuccess(buffer) {
         this.buffers[bufferName] = buffer;
-        if (typeof callback === 'function') {			
+        if (typeof callback === 'function') {
 			callback(); // Aufruf der Wiedergabefunktion
         }
     }.bind(this), this.onBufferError);
 };
 
-BufferLoader.prototype.load = function(bufferName, file, callback) {	
+BufferLoader.prototype.load = function(bufferName, file, callback) {
 	reader = new FileReader();
 	reader.onload = function(data) {
         if(data.target && data.target.result) {
@@ -57,11 +57,11 @@ BufferLoader.prototype.load = function(bufferName, file, callback) {
 BufferLoader.prototype._playBuffer = function(name, gain, time) {
     var source = this.context.createBufferSource();
     source.buffer = this.buffer;
-    
+
     var analyser = this.context.createAnalyser();
-	
-	
-	
+
+
+
     source.connect(analyser);
     source.connect(this.context.destination);
     source.start(time);
@@ -76,4 +76,3 @@ BufferLoader.prototype.play = function (name, gain, time) {
     if (this.buffer) { this._playBuffer(name, time, gain); }
     else { throw new Error("Buffer does not exist"); }
 };
-

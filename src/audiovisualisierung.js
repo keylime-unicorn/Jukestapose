@@ -42,7 +42,10 @@ $(function () {
             //init canvas
 	    initBinCanvas();
 });
-
+function success() {
+    document.getElementById('Invisibleinput').click();
+    console.log('Succesful!');
+}
 function handleFiles(files) {
     if(files.length === 0){
         return;
@@ -103,17 +106,17 @@ function handleFiles(files) {
 					finalTitle = newTitle;
 				}
 
-				$("#title").html(finalTitle);
+				$("#title").html(finalTitle.toUpperCase());
 			}
 			else {
-				$("#title").html(tags.title);
+				$("#title").html(tags.title.toUpperCase());
 			}
 
 			$("#title").css("visibility", "visible");
 
-			$("#artist").html(tags.artist);
+			$("#artist").html(tags.artist.toUpperCase());
 			$("#artist").css("visibility", "visible");
-			$("#album").html(tags.album);
+			$("#album").html(tags.album.toUpperCase());
 			$("#album").css("visibility", "visible");
 		  }, {
 			tags: ["title","artist","album","picture"],
@@ -141,7 +144,7 @@ function handleFiles(files) {
 		// when the audio is decoded play the sound
 		sourceNode.buffer = buffer;
 		sourceNode.start(0);
-		$("#freq, body").addClass("animateHue");
+		// $("#freq, body").addClass("animateHue");
 		//on error
 		}, function(e) {
 			console.log(e);
@@ -226,7 +229,7 @@ function initBinCanvas () {
 	//add new canvas
 	c = document.getElementById("freq");
 	c.width = window.innerWidth;
-        c.height = window.innerHeight;
+    c.height = window.innerHeight;
 	//get context from canvas for drawing
 	ctx = c.getContext("2d");
 

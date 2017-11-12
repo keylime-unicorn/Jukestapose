@@ -16,8 +16,12 @@
     -webkit-filter: hue-rotate(-360deg);
   }
 }
+.Invisibleinput {
+    display: none;
+}
 #freq {
-    background: linear-gradient(#ff0088, red);
+    background: linear-gradient(#BA01CA, #FED9FF);
+    /*background-image: "veil.png";*/
     position: absolute;
     left: 0;
     right: 0;
@@ -44,12 +48,12 @@ body {
     width: 100%;
     z-index: 999;
     font-weight: 100;
-    font-family: "Roboto", sans-serif;
+    font-family: "VT323", monospace;
     /*font-size: 100px;*/
     color: #fff;
     visibility: hidden;
     letter-spacing: -.05em;
-    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+    /*text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);*/
 	margin-bottom: 15px;
 }
 #song_info_wrapper {
@@ -65,6 +69,51 @@ body {
 #artist {
     font-size: 3vw;
 }
+.bgimg {
+    bottom:-50%;
+    right:-10%;
+    opacity:0.6;
+    float:right;
+    z-index:999;
+    position:fixed;
+    height:120%;
+}
+.derpy {
+    top:10%;
+    color:white;
+    font-size:100px;
+    width:10px;
+    z-index:999;
+    position:fixed;
+    /*text-align:center;*/
+    margin-left: 5%;
+    float:left;
+    cursor: progress;
+}
+.derpy2 {
+    top:40%;
+    color:white;
+    font-size:100px;
+    width:10px;
+    z-index:999;
+    position:fixed;
+    /*text-align:center;*/
+    margin-left: 10%;
+    float:left;
+    cursor: progress;
+}
+.derp {
+    bottom:0px;
+    color:white;
+    font-size:100px;
+    width:10px;
+    z-index:999;
+    position:fixed;
+    /*text-align:center;*/
+    margin-left: 48.5%;
+    float:left;
+    cursor: progress;
+}
 #album {
     font-size: 3vw;
 	/*font-size: 40px;*/
@@ -72,14 +121,14 @@ body {
 }
 
 input, button, #loading {
-    text-align: center;
+
     z-index: 999;
-    position: fixed;
     /*margin-right: middle;
     margin-left: auto;*/
-    position:fixed;
+    position: fixed;
     bottom:10px;
-    width:100%;
+    width:200%;
+    margin-left: 40%;
 
 }
 
