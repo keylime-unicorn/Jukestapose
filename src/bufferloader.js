@@ -37,21 +37,21 @@ BufferLoader.prototype.onBufferLoad = function(bufferName, srcBuffer, callback) 
     this.context.decodeAudioData(srcBuffer, function onSuccess(buffer) {
         this.buffers[bufferName] = buffer;
         if (typeof callback === 'function') {
-			callback(); // Aufruf der Wiedergabefunktion
+            callback(); // Aufruf der Wiedergabefunktion
         }
     }.bind(this), this.onBufferError);
 };
 
 BufferLoader.prototype.load = function(bufferName, file, callback) {
-	reader = new FileReader();
-	reader.onload = function(data) {
+    reader = new FileReader();
+    reader.onload = function(data) {
         if(data.target && data.target.result) {
             this.onBufferLoad(bufferName, data.target.result, callback);
         }else{
             console.dir(data);
         }
-	}.bind(this);
-	reader.readAsArrayBuffer(file);
+    }.bind(this);
+    reader.readAsArrayBuffer(file);
 };
 
 BufferLoader.prototype._playBuffer = function(name, gain, time) {
