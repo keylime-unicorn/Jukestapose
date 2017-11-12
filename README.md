@@ -20,3 +20,9 @@ Hence the ___LUG Modern Jukebox___ was born!
 
 
 ## Usage
+
+Server
+
+* run `./start.sh`
+
+Client
