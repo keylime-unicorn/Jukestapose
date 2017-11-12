@@ -14,7 +14,7 @@ much easier would it be if we could all just add our songs to a collective queue
 each song choice from each person's queue in a round robin fashion from one central set of
 speakers? 
 
-Hence the ___LUG Modern Jukebox___ was born!
+Hence Jukestapose was born!
 
 ## Dependencies
 
