@@ -44,46 +44,32 @@ $(function () {
 });
 
 function handleFiles(files) {
-    if(files.length === 0){
-        return;
-    }
-	fileChosen = true;
-    setupAudioNodes();
-	var fileReader  = new FileReader();
-    fileReader.onload = function(){
-         var arrayBuffer = this.result;
-         console.log(arrayBuffer);
-         console.log(arrayBuffer.byteLength);
 
-		 filename = files[0].name.toString();
+  if(files.length === 0){
+    return;
+  }
+
+  fileChosen = true;
+  setupAudioNodes();
+	var fileReader  = new FileReader();
+  fileReader.onload = function(){
+  var arrayBuffer = this.result;
+
+		filename = files[0].name.toString();
 		filename = filename.slice(0, -4);
-		console.log(filename);
 
 		var url = files[0].urn || files[0].name;
 		ID3.loadTags(url, function() {
 			var tags = ID3.getAllTags(url);
 
-//                    console.log(tags.title.toString().length);
-//                    if (tags.title.length > 14) {
-//                        var newTitle = tags.title.substring(0,14);
-//                        newTitle += "...";
-//                        $("#title").html(newTitle);
-//                    }
-//                    else {
-//                        $("#title").html(tags.title);
-//                    }
 			if (tags.title.length > 14) {
 				var finalTitle;
 				var checkTitle = tags.title.toLowerCase();
 				var cutIndex = checkTitle.indexOf("feat.");
-				//console.log(tags.title.toLowerCase());
 				var cutIndex2 = checkTitle.indexOf("(");
-				//console.log(cutIndex2);
 
 				var enthaeltFeat = cutIndex !== -1;
 				var enthaeltKlammer = cutIndex2 !== -1;
-
-				//console.log(enthaeltKlammer);
 
 				if (enthaeltFeat && !enthaeltKlammer) {
 					finalTitle = tags.title.substring(0, cutIndex);
@@ -124,6 +110,7 @@ function handleFiles(files) {
      fileReader.readAsArrayBuffer(files[0]);
      var url = URL.createObjectURL(files[0]);
 
+  // XMLHttpRequest
 	var request = new XMLHttpRequest();
 
 	request.addEventListener("progress", updateProgress);
@@ -131,14 +118,11 @@ function handleFiles(files) {
 	request.addEventListener("error", transferFailed);
 	request.addEventListener("abort", transferCanceled);
 
-	request.open('GET', url, true);
+	request.open('POST', url, true);
 	request.responseType = 'arraybuffer';
 
- 	// When loaded decode the data
 	request.onload = function() {
-		// decode the data
 		context.decodeAudioData(request.response, function(buffer) {
-		// when the audio is decoded play the sound
 		sourceNode.buffer = buffer;
 		sourceNode.start(0);
 		$("#freq, body").addClass("animateHue");
