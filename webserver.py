@@ -12,6 +12,11 @@ app = Flask(__name__)
 
 player = pyglet.media.Player()
 
+def main():
+  player.play()
+
+main()
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
   if request.method == 'POST':
@@ -22,12 +27,8 @@ def home():
     song.export(os.path.join(os.path.dirname(os.path.abspath(__file__)) + '/Music/', name + '.wav'), format="wav")
     music = pyglet.media.load(os.path.join(os.path.dirname(os.path.abspath(__file__)) + '/Music/', name + '.wav'))
     add_to_queue(music)
-    player.play()
     return "AHHHH"
   if request.method == 'GET':
     return render_template('index.html', name='index')
-def main():
-  while player.queue:
-    player.play()
 def add_to_queue(name):
   player.queue(name)
