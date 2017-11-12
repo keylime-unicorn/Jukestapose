@@ -18,6 +18,7 @@ Hence the ___LUG Modern Jukebox___ was born!
 
 ## Dependencies
 
+* run the following command: `pip install -r REQUIREMENTS.txt`
 
 ## Usage
 
