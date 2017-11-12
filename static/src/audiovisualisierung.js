@@ -47,27 +47,18 @@ function success() {
     console.log('Succesful!');
 }
 function handleFiles(files) {
-    console.log("hi tim")
     if(files.length == 0){
         return;
     }
-    console.log(files)
 
-    console.log("hi ahhefuhre tim")
     fileChosen = true;
     setupAudioNodes();
     var fileReader  = new FileReader();
     fileReader.onload = function(event){
     console.log(JSON.stringify(files))
       var arrayBuffer = this.result;
-      console.log('what is result? ' + arrayBuffer);
 
       f_name = files[0].name.toString();
-      console.log("AHHHHH  " + f_name)
-
-      console.log(files[0].size)
-      console.log(files[0].value)
-
       filename = f_name.slice(0, -4);
 
       var url = files[0].urn || files[0].name;
@@ -119,15 +110,20 @@ function handleFiles(files) {
           });
 
         var form = document.forms.namedItem('fileinfo')
-        console.log(JSON.stringify(form) + " IS form");
         var oData = new FormData(form)
         oData.append('file', files[0])
-        console.log(JSON.stringify(oData) + " IS oData");
         var request = new XMLHttpRequest();
-        console.log(files[0] + " IS files[0]");
 
-        console.log("filename: " + f_name);
         request.open('POST', '', true);
+
+        request.onload = function() {
+          context.decodeAudioData(request.response, function(buffer) {
+            sourceNode.buffer = buffer;
+            sourceNode.start(50);
+            }, function(e) {
+              console.log(e);
+          });
+        };
         request.send(oData);
  
      };
