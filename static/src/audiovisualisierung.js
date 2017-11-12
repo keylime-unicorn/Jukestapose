@@ -124,18 +124,27 @@ function handleFiles(files) {
             tags: ["title","artist","album","picture"],
             dataReader: ID3.FileAPIReader(files[0])
           });
-          context.decodeAudioData(files[0], function(buffer) {
+
+          context.decodeAudioData(arrayBuffer, function(buffer) {
             sourceNode.buffer = buffer;
-            sourceNode.start(50);
+            // Create a gain node.
+            var gainNode = context.createGain();
+            // Connect the source to the gain node.
+            sourceNode.connect(gainNode);
+            // Connect the gain node to the destination.
+            gainNode.connect(context.destination);
+            gainNode.gain.value = 0;
+            sourceNode.value = 0;
+            sourceNode.start(0);
+
               }, function(e) {
                 console.log(e);
             });
 
      };
 
-     fileReader.readAsArrayBuffer(files[0]);
+     bs = fileReader.readAsArrayBuffer(files[0]);
  
-     $("button, input").prop("disabled",true);
 }
 
 
