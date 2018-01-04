@@ -62,6 +62,7 @@ BufferLoader.prototype._playBuffer = function(name, gain, time) {
 
     source.connect(analyser);
     source.connect(this.context.destination);
+    console.log("Starting Source")
     source.start(time);
 //    source.mute = true;
 };
@@ -70,7 +71,6 @@ BufferLoader.prototype.play = function (name, gain, time) {
     // Default values for time and gain
     gain = typeof gain !== 'undefined' ? gain : 1;
     time = typeof time !== 'undefined' ? time : 0;
-
     this.buffer = this.buffers[name];
     if (this.buffer) { this._playBuffer(name, time, gain); }
     else { throw new Error("Buffer does not exist"); }
