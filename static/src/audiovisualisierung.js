@@ -32,7 +32,6 @@ $(function () {
         var containerHeight = $("#song_info_wrapper").height();
         var topVal = $(window).height() / 2 - containerHeight / 2;
         $("#song_info_wrapper").css("top", topVal);
-        console.log(topVal);
         //handle different types navigator objects of different browsers
         navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
                 navigator.mozGetUserMedia || navigator.msGetUserMedia;
@@ -45,7 +44,6 @@ $(function () {
 
 function success() {
     document.getElementById('Invisibleinput').click();
-    console.log('Succesful!');
 }
 
 function get_song(files) {
@@ -71,7 +69,6 @@ function handleFiles(files) {
     setupAudioNodes();
     var fileReader  = new FileReader();
     fileReader.onload = function(event){
-    console.log(JSON.stringify(files))
       var arrayBuffer = this.result;
 
       f_name = files[0].name.toString();
@@ -124,7 +121,7 @@ function handleFiles(files) {
             tags: ["title","artist","album","picture"],
             dataReader: ID3.FileAPIReader(files[0])
           });
-
+          console.log(arrayBuffer);
           context.decodeAudioData(arrayBuffer, function(buffer) {
             sourceNode.buffer = buffer;
             // Create a gain node.
@@ -135,9 +132,10 @@ function handleFiles(files) {
             gainNode.connect(context.destination);
             gainNode.gain.value = 0;
             sourceNode.value = 0;
+            console.log("Starting SourceNode");
             sourceNode.start(0);
-
-              }, function(e) {
+            console.log(sourceNode);
+          }, function(e) {
                 console.log(e);
             });
 
@@ -180,7 +178,6 @@ function onWindowResize()
     var containerHeight = $("#song_info_wrapper").height();
     var topVal = $(window).height() / 2 - containerHeight / 2;
     $("#song_info_wrapper").css("top", topVal);
-    console.log(topVal);
 }
 
 
@@ -193,8 +190,6 @@ function setupAudioNodes() {
     sourceNode = context.createBufferSource();
     //connect source to analyser as link
     sourceNode.connect(analyser);
-    // and connect source to destination
-    sourceNode.connect(context.destination);
     //start updating
     rafID = window.requestAnimationFrame(updateVisualization);
 }
@@ -239,7 +234,6 @@ function drawBars (array) {
 
     ctx.globalCompositeOperation='source-over';
 
-    //console.log(maxBinCount); //--> 1024
     ctx.scale(0.5, 0.5);
     ctx.translate(window.innerWidth, window.innerHeight);
     ctx.fillStyle = "#fff";
@@ -257,7 +251,6 @@ function drawBars (array) {
     else if ($(window).width() < 500) {
         bar_length_factor = 20.0;
     }
-    console.log($(window).width());
     //go over each bin
     for ( var i = 0; i < maxBinCount; i++ ){
 
