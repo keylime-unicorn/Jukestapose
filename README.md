@@ -19,7 +19,7 @@ Hence Jukestapose was born!
 ## Dependencies
 
 * Requires python3
-* run the following command: `pip install -r REQUIREMENTS.txt`
+* run the following command: `pip3 install -r REQUIREMENTS.txt`
 
 ## Usage
 
