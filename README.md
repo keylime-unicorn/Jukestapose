@@ -18,11 +18,15 @@ Hence Jukestapose was born!
 
 ## Dependencies
 
-* Requires python3
-* run the following command: `pip3 install -r REQUIREMENTS.txt`
+* [Python] 3.X
+* [Pip] 3.X
+* Modules: run `pip3 install -r REQUIREMENTS.txt`
 
 ## Usage
 
 Server
 
 * run `./start.sh`
+
+[Python]: https://python.org
+[Pip]:    https://pypi.org/project/pip/
