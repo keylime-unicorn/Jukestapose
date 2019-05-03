@@ -90,7 +90,7 @@ We are mere mortals, and thus the programs we produce may have some bugs in it. 
 
 So you want to add to this project? Yay! 
 
-##Future Improvements:
+# Future Improvements:
 * Implement an algorithm for creating a fair queue of songs. Let's prevent the situation that one friend is spamming Jukestapose with thier choices and not allowing others' music be heard.
 * Saving MP3s and indexing them. Currently, Jukestapose has users upload MP3 files everytime they are added. A future improvement is to have the server take MP3s for new songs, along with some data about them, and save them for future use without the MP3 upload. 
 * Add a visible play queue that users can contribute to. Instead of relying soley on whatever songs get added, you could allow users to upvote or downvote upcoming songs in the queue, and majority opinion could determine play order. 
