@@ -1,12 +1,10 @@
-# Jukestapose
-
 Cami Carballo | Catalina Vajiac | Samantha Corn
 
 Client-server application suite for playing and sharing music.
 
 TODO: pictures
 
-## Motivation
+# Motivation
 
 Friends tend to study and do homework together often.  Lots of times we find ourselves sitting side
 by side, with our headphones on, sending each other links to songs we are currently jamming out to.
@@ -22,35 +20,35 @@ This project was originally created for a hackathon, and has remained mostly sta
 few years. We would like to improve upon it and make it more usable/fully featured.
 
 
-## Installation
+# Installation
 
-### Binaries:
+## Binaries:
 * TODO: include link to binary here
 
-### From Source:
+## From Source:
 
-#### Dependencies
+### Dependencies
 
 * [Python] 3.X
 * [Pip] 3.X
 
 
-#### Instructions
+### Instructions
 * Clone the repo
 * Modules: run `pip3 install -r REQUIREMENTS.txt`
 
-## Usage
+# Usage
 
 * Start the server by running `./start.sh`
 * TODO: more about config, settings, etc
 * TODO: client information
 
-## Contributing
+# Contributing
 
 * TODO: create CONTRIBUTING.md/details here
 
 
-## Previous (OG) Contributors:
+# Previous (OG) Contributors:
 * Tim Burchfield
 * Doug Smith
 * Noah Yoshida
