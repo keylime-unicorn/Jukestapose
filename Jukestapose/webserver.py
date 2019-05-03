@@ -15,19 +15,20 @@ player = pyglet.media.Player()
 @app.route('/', methods=['GET', 'POST'])
 def home():
 
-  player.play()
+  player.play() 
+  #print(player.playing)
+  #print(player.source)
 
   if request.method == 'POST':
-    f = request.files['file']
-    name = secure_filename(f.filename)
-    mp3 = os.path.join(os.path.dirname(os.path.abspath(__file__)) + '/Music/', name)
-    wav = os.path.join(os.path.dirname(os.path.abspath(__file__)) + '/Music/', name + '.wav')
-    f.save(os.path.join('./Music/', name))
-    song = AudioSegment.from_mp3(mp3)
-    song.export(wav, format="wav")
-    music = pyglet.media.load(wav)
+    #f = request.files['file']
+    #name = secure_filename(f.filename)
+    #f.save(os.path.join('./Music/', name))
+    #music = pyglet.media.load("./Music/" + name)
+    #player.queue(music)
+
+    name = "./Music/bensound-cute.mp3"
+    music = pyglet.media.load(name)
     player.queue(music)
-    os.remove(mp3)
     return "AHHHH"
 
   if request.method == 'GET':
