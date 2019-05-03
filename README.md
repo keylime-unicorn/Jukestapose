@@ -31,7 +31,7 @@ few years. We would like to improve upon it and make it more usable/fully featur
 
 * [Python] 3.X
 * [Pip] 3.X
-* [AVbin] 10  https://avbin.github.io/AVbin/Download.html
+* [AVbin] 10 
 
 
 ### Instructions
@@ -56,3 +56,4 @@ few years. We would like to improve upon it and make it more usable/fully featur
 
 [Python]: https://python.org
 [Pip]:    https://pypi.org/project/pip/
+[AVbin]:  https://avbin.github.io/AVbin/Download.html
