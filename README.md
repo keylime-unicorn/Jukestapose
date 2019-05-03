@@ -29,7 +29,7 @@ few years. We would like to improve upon it and make it more usable/fully featur
 
 ## With Python pip:
 
-* `sudo pip3 install --index-url https://test.pypi.org/simple/ --no-deps jukestapose`
+* `sudo pip3 install -i https://test.pypi.org/simple/ jukestapose`
 
 ## From Source:
 
