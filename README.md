@@ -19,27 +19,28 @@ Hence Jukestapose was born!
 This project was originally created for a hackathon, and has remained mostly stagnant for the past
 few years. We would like to improve upon it and make it more usable/fully featured.
 
-
 # Installation
 
-## Binaries:
-* TODO: include link to binary here
-
-## From Source:
-
-### Dependencies
+## Dependencies:
 
 * [Python] 3.X
 * [Pip] 3.X
+* [AVbin] 10 
 
+## With Python pip:
 
-### Instructions
-* Clone the repo
-* Modules: run `pip3 install -r REQUIREMENTS.txt`
+* `sudo pip3 install -i https://test.pypi.org/simple/ jukestapose`
+
+## From Source:
+
+* `git clone git@github.com/camicarballo/Jukestapose.git`
+* `cd Jukestapose`
+* `sudo pip3 install .`
 
 # Usage
 
 * Start the server by running `./start.sh`
+
 * TODO: more about config, settings, etc
 * TODO: client information
 
@@ -47,11 +48,11 @@ few years. We would like to improve upon it and make it more usable/fully featur
 
 * TODO: create CONTRIBUTING.md/details here
 
-
-# Previous (OG) Contributors:
+# Previous Contributors:
 * Tim Burchfield
 * Doug Smith
 * Noah Yoshida
 
 [Python]: https://python.org
 [Pip]:    https://pypi.org/project/pip/
+[AVbin]:  https://avbin.github.io/AVbin/Download.html
