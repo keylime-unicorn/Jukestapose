@@ -1,0 +1,3 @@
+graft jukestapose/static
+graft jukestapose/templates
+global-exclude *.pyc

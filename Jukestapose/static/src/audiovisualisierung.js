@@ -37,7 +37,7 @@ $(function () {
                 navigator.mozGetUserMedia || navigator.msGetUserMedia;
         //eigene Init
         loader = new BufferLoader();
-            //loader.visualize = visualize;
+        loader.visualize = visualize;
             //init canvas
         initBinCanvas();
 });
