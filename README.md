@@ -1,4 +1,4 @@
-Cami Carballo | Catalina Vajiac | Samantha Corn
+<p align="center"> Cami Carballo | Catalina Vajiac | Samantha Corn </p>
 
 Client-server application suite for playing and sharing music.
 
@@ -25,29 +25,26 @@ few years. We would like to improve upon it and make it more usable/fully featur
 
 * [Python] 3.X
 * [Pip] 3.X
-* [AVBin] 10
-
-## With pip install:
-
-```
-sudo pip3 install -i https://test.pypi.org/simple/ jukestapose`
-```
+* [AVbin] 10
 
 ## From .tar.gz:
 
-TODO: add download for .tar.gz & check name
+Download the current version of Jukestapose [here]!
+
 ```
-tar xvzf jukestapose.tar.gz -C Jukestapose
+tar xvzf Jukestapose-XXX.tar.gz -C Jukestapose
 cd Jukestapose
-sudo pip3 install .
+sudo pip3 install -r REQUIREMENTS.txt
 ```
+
+**XXX is the version of Jukestapose**
 
 ## From Source:
 
 ```
-git clone https://github.com/camicarballo/Jukestapose
+git clone https://github.com/camicarballo/Jukestapose.git
 cd Jukestapose
-sudo pip3 install .
+sudo pip3 install -r REQUIREMENTS.txt
 ```
 
 # Usage
@@ -60,15 +57,15 @@ Start the server by opening a terminal and running `./start.sh`. You only need o
 
 To connect to Jukestapose from individual devices, find the host IP address in the output of the server. For example:
 
-TODO: Add example output here
+![](images/ip-a.png)
 
-For this server, the IP address you would use is x.x.x.x. 
+For this server, the IP address you would use is `10.26.108.68`. 
 
-Once you've located the IP address, just open up a browser, enter the IP address asyour URL, and go!
+Once you've located the IP address, just open up a browser, enter the IP address and port as your URL, and go!
 
 TODO: Add image of running Jukestapose
 
-Everyone that wants to listen or add to the play queue just has to access that address.
+Everyone that wants to listen or add to the play queue just has to access that addressinset.
 
 ## Adding songs to the queue
 
@@ -100,7 +97,8 @@ So you want to add to this project? Yay!
 * Doug Smith
 * Noah Yoshida
 
-[Python]: 		https://python.org
-[Pip]:    		https://pypi.org/project/pip/
-[Jukestapose]:		https://camicarballo.github.io/Jukestapose/
+[Python]: 		        https://python.org
+[Pip]:    		        https://pypi.org/project/pip/
+[AVbin]:                https://avbin.github.io/AVbin/Download.html
 [Submit a new issue]:	https://github.com/camicarballo/Jukestapose/issues/new
+[here]:                 https://github.com/camicarballo/Jukestapose/releases
