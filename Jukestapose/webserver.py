@@ -2,6 +2,7 @@
 
 from flask import Flask, request, render_template
 from werkzeug.utils import secure_filename
+from pydub import AudioSegment
 import pyglet
 import os
 
@@ -13,13 +14,35 @@ player = pyglet.media.Player()
 def home():
 
   player.play() 
+  print(player.playing)
 
   if request.method == 'POST':
     f = request.files['file']
+
     name = secure_filename(f.filename)
-    f.save(os.path.join('./Music/', name))
-    music = pyglet.media.load("./Music/" + name)
+    name = os.path.basename(name)
+    mp3_name = "./Music/" + name + ".mp3"
+    wav_name = "./Music/" + name + ".wav"
+
+    f.save(mp3_name)
+
+    print("creating audiosegment :P")
+
+    wav = AudioSegment.from_mp3(mp3_name)
+    wav.export(wav_name, format="wav")
+
+    print("wave exported :)")
+
+    os.remove(mp3_name)
+
+    music = pyglet.media.load(wav_name)
+    
+    print("media loaded")
+
     player.queue(music)
+
+    print("song queued")
+
     return ""
 
   if request.method == 'GET':
