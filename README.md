@@ -2,8 +2,6 @@
 
 Client-server application suite for playing and sharing music.
 
-TODO: pictures
-
 # Motivation
 
 Friends tend to study and do homework together often.  Lots of times we find ourselves sitting side 
@@ -63,15 +61,11 @@ For this server, the IP address you would use is `10.26.108.68`.
 
 Once you've located the IP address, just open up a browser, enter the IP address and port as your URL, and go!
 
-TODO: Add image of running Jukestapose
-
 Everyone that wants to listen or add to the play queue just has to access that addressinset.
 
 ## Adding songs to the queue
 
 To add a song to the queue, click the button at the bottom of the Jukestapose site, and select an MP3 to add.
-
-TODO: Picture of Jukestapose with circled button here
 
 Aaaaaaand you're done! Your song has been added.
 
@@ -87,7 +81,10 @@ We are mere mortals, and thus the programs we produce may have some bugs in it. 
 
 So you want to add to this project? Yay! 
 
+
+
 # Future Improvements:
+* 
 * Implement an algorithm for creating a fair queue of songs. Let's prevent the situation that one friend is spamming Jukestapose with thier choices and not allowing others' music be heard.
 * Saving MP3s and indexing them. Currently, Jukestapose has users upload MP3 files everytime they are added. A future improvement is to have the server take MP3s for new songs, along with some data about them, and save them for future use without the MP3 upload. 
 * Add a visible play queue that users can contribute to. Instead of relying soley on whatever songs get added, you could allow users to upvote or downvote upcoming songs in the queue, and majority opinion could determine play order. 
